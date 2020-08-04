@@ -20,7 +20,7 @@ public class Bot(token : String, var prefix : String){
 
         var messageFlux = client.eventDispatcher.on(MessageCreateEvent::class.java).map { it.message }
             .filter{message -> message.content.length >= prefix.length }.filter{message -> message.content.substring(0,prefix.length) == prefix  }
-        var commandListener = CommandListener(messageFlux, prefix)
+        var commandListener = CommandListener(messageFlux, prefix,client)
        commandListener.listen()
        client.onDisconnect().block()
 

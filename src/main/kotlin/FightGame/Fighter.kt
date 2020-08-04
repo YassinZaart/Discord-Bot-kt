@@ -1,4 +1,4 @@
 package FightGame
 
-class Fighter(var hp : Int, var attack : Int, var defense : Int, var Accuracy : Int, var turn : Boolean) {
+public class Fighter(var name : String, var hp : Int, var attack : Int, var defense : Int, var accuracy : Int, var turn : Boolean) {
 }
