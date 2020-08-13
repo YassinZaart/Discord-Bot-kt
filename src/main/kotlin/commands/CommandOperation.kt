@@ -37,7 +37,7 @@ class CommandOperation(var message : Message) : Commands {
                             Constants.KISS_FOOTER, Constants.KISS_DESCRIPTION,
                             Constants.TRICCX_URL)
                     else
-                        embedCreator.createImageTitle(Constants.KISS_URL, title)
+                        embedCreator.createImageTitle(title, Constants.KISS_URL)
 
 
                 }.subscribe()

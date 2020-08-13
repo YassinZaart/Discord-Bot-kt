@@ -26,7 +26,7 @@ class Fight(var message: Message, var client: GatewayDiscordClient, var userID :
 
                     if (fightManager.fighter1Turn && message.userData.id() == fighterID){
                             if (isMove(message.content, fightManager.moveSet1)){
-                                executeMove(message.content, fightManager.moveSet1,fightManager,channel)
+                                executeMove(message.content, fightManager.moveSet1, fightManager, channel)
                                 embedCreator.createTurnEmbed(fightManager.moveSet2, fightManager.fighter2.name)
                             }
                             else sendWrongMessage(channel, fightManager.moveSet1)
@@ -62,7 +62,7 @@ class Fight(var message: Message, var client: GatewayDiscordClient, var userID :
     private fun executeMove(message: String, moves: Array<Move>, fightManager: FightManager, channel: MessageChannel){
         for (move in moves){
             if (move.name.equals(message, true)){
-                move.executeMove(fightManager,true, channel)
+                move.executeMove(fightManager, channel)
                 return
             }
         }

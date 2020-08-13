@@ -6,7 +6,7 @@ import discord4j.rest.util.Color
 
 class EmbedCreator(var channel: MessageChannel) {
 
-    fun createImageTitle(url: String, title: String) {
+    fun createImageTitle(title : String, url : String) {
         channel.createEmbed { embedCreateSpec -> embedCreateSpec.setImage(url).setTitle(title) }.subscribe()
     }
 

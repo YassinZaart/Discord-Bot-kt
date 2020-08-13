@@ -12,7 +12,7 @@ class CommandFormatValidator(var message : Message) {
         return SimpleFormatState.NO_ERROR
     }
 
-    fun  ReasonFormatCheck() : ReasonFormatState{
+    fun  reasonFormatCheck() : ReasonFormatState{
         val scanner = Scanner(message.content)
         scanner.next()
         scanner.next()
