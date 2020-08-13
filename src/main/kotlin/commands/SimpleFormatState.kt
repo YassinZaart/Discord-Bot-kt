@@ -1,4 +1,4 @@
-package Commands
+package commands
 
 enum class SimpleFormatState {
     NO_ERROR,

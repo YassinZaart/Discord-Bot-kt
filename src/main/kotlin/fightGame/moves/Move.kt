@@ -1,12 +1,12 @@
-package FightGame.Moves
+package fightGame.moves
 
-import FightGame.Fighter
+import fightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
 
 abstract class Move() : ExecutableMove {
     abstract var name : String
     abstract var description : String
 
-    abstract override fun executeMove(executor : Fighter, standby : Fighter, channel : MessageChannel)
+    abstract override fun executeMove(fightManager : FightManager, fighter1Turn : Boolean, channel : MessageChannel)
 
 }

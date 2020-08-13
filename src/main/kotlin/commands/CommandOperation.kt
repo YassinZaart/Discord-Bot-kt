@@ -1,17 +1,11 @@
-package Commands
+package commands
 
-import Embeds.EmbedCreator
+import embeds.EmbedCreator
 import discord4j.common.util.Snowflake
-import discord4j.core.`object`.entity.Guild
-import discord4j.core.`object`.entity.Member
 import discord4j.core.`object`.entity.Message
-import discord4j.core.`object`.entity.channel.MessageChannel
 import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
-import reactor.function.TupleUtils
-import reactor.util.function.Tuple2
 
-class CommandOperation(var message : Message) : ModCommandOperation {
+class CommandOperation(var message : Message) : Commands {
 
     override fun mute(muteRoleID : Snowflake, userID : Snowflake) {
         message.guild.flatMap{ guild -> guild.getMemberById(userID)}
@@ -32,18 +26,18 @@ class CommandOperation(var message : Message) : ModCommandOperation {
         Flux.zip(message.channel, message.guild, message.authorAsMember)
             .doOnNext { tuple3 ->
                 tuple3.t2.getMemberById(userID).doOnNext { reciever ->
-                    var channel = tuple3.t1
-                    var kisser = tuple3.t3
+                    val channel = tuple3.t1
+                    val kisser = tuple3.t3
                     val embedCreator = EmbedCreator(channel)
-                    var title = kisser.displayName + " kisses " + reciever.displayName + ", Adorbs <3"
+                    val title = kisser.displayName + " kisses " + reciever.displayName + ", Adorbs <3"
 
                     if (userID.asString() == "731729124535697408")
                         embedCreator.createImageTitleFD(
-                            ConstantValues.KISS_URL.value, title, ConstantValues.KISS_FOOTER_URL.value,
-                            ConstantValues.KISS_FOOTER.value, ConstantValues.KISS_DESCRIPTION.value,
-                            ConstantValues.TRICCX_URL.value)
+                            Constants.KISS_URL, title, Constants.KISS_FOOTER_URL,
+                            Constants.KISS_FOOTER, Constants.KISS_DESCRIPTION,
+                            Constants.TRICCX_URL)
                     else
-                        embedCreator.createImageTitle(ConstantValues.KISS_URL.value, title)
+                        embedCreator.createImageTitle(Constants.KISS_URL, title)
 
 
                 }.subscribe()

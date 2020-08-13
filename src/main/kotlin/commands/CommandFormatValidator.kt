@@ -1,9 +1,9 @@
-package Commands
+package commands
 
 import discord4j.core.`object`.entity.Message
 import java.util.*
 
-class CommandFormat(var message : Message) {
+class CommandFormatValidator(var message : Message) {
 
     fun simpleFormatCheck() : SimpleFormatState {
         var mentions = message.userMentionIds
