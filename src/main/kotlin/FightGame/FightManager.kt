@@ -22,8 +22,8 @@ class FightManager {
     var fighter1Turn = true
     var fighter2Turn = false
 
-    var moveSet1 = Array<Move>(4) { getMoveSet(it) }
-    var moveSet2 = Array<Move>(4) { getMoveSet(it) }
+    var moveSet1 = Array<Move>(4) { getMove(it) }
+    var moveSet2 = Array<Move>(4) { getMove(it) }
 
 
     fun isFinished() : Boolean{
@@ -35,7 +35,7 @@ class FightManager {
         fighter2Turn = !fighter2Turn
     }
 
-    fun getMoveSet(index : Int) : Move {
+    fun getMove(index : Int) : Move {
         return when(index){
             0 -> PunchMove()
             1 -> SharpenMove()
