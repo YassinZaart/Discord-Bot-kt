@@ -1,6 +1,6 @@
-package commands
+package Commands
 
-import embeds.EmbedCreator
+import Embeds.EmbedCreator
 import discord4j.common.util.Snowflake
 import discord4j.core.`object`.entity.Message
 import reactor.core.publisher.Flux
@@ -29,9 +29,9 @@ class CommandOperation(var message : Message) : Commands {
                     val channel = tuple3.t1
                     val kisser = tuple3.t3
                     val embedCreator = EmbedCreator(channel)
-                    val title = kisser.displayName + " kisses " + reciever.displayName + ", Adorbs <3"
+                    val title = "${kisser.displayName} kisses ${reciever.displayName}, Adorbs <3"
 
-                    if (userID.asString() == "731729124535697408")
+                    if (userID.asString() == Constants.MY_ID)
                         embedCreator.createImageTitleFD(
                             Constants.KISS_URL, title, Constants.KISS_FOOTER_URL,
                             Constants.KISS_FOOTER, Constants.KISS_DESCRIPTION,

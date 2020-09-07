@@ -1,6 +1,6 @@
-package fightGame.moves
-import embeds.EmbedCreator
-import fightGame.FightManager
+package FightGame.Moves
+import Embeds.EmbedCreator
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
 
 class PunchMove: Move() {
@@ -9,8 +9,8 @@ class PunchMove: Move() {
 
     override fun executeMove(fightManager : FightManager, channel: MessageChannel) {
         val embedCreator = EmbedCreator(channel)
-        var executor = fightManager.getExecutor()
-        var standby = fightManager.getStandby()
+        val executor = fightManager.executor
+        val standby = fightManager.standby
         fightManager.switchTurns()
 
         val rand = (Math.random() * 101).toInt()

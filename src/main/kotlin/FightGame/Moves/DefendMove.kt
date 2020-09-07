@@ -1,8 +1,8 @@
-package fightGame.moves
+package FightGame.Moves
 
-import fightGame.FightManager
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
-import embeds.EmbedCreator
+import Embeds.EmbedCreator
 
 class DefendMove : Move(){
 
@@ -10,7 +10,7 @@ class DefendMove : Move(){
     override var description = "Raises your defense stats"
 
     override fun executeMove(fightManager: FightManager, channel: MessageChannel) {
-        var executor = fightManager.getExecutor()
+        val executor = fightManager.executor
         if(executor.defense <= 0){ channel.createMessage("Your defense cant be increased anymore," +
                 " choose another move").subscribe()
             return

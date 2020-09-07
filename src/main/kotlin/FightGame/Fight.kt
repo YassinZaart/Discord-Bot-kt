@@ -1,12 +1,13 @@
-package fightGame
+package FightGame
 
-import embeds.EmbedCreator
-import fightGame.moves.Move
+import Embeds.EmbedCreator
+import FightGame.Moves.Move
 import discord4j.common.util.Snowflake
 import discord4j.core.GatewayDiscordClient
 import discord4j.core.`object`.entity.Message
 import discord4j.core.`object`.entity.channel.MessageChannel
 import discord4j.core.event.domain.message.MessageCreateEvent
+import java.lang.IllegalArgumentException
 
 class Fight(var message: Message, var client: GatewayDiscordClient, var userID : Snowflake) {
 
@@ -69,7 +70,9 @@ class Fight(var message: Message, var client: GatewayDiscordClient, var userID :
     }
 
     private fun sendWrongMessage(channel: MessageChannel, moves: Array<Move>){
-        if (moves.size != 4) return
+
+        if (moves.size != 4) throw IllegalArgumentException("MoveSet should only have 4 moves")
+
         var move1 = moves[0].name
         var move2 = moves[1].name
         var move3 = moves[2].name

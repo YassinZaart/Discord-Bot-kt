@@ -1,8 +1,8 @@
-package fightGame.moves
+package FightGame.Moves
 
-import fightGame.FightManager
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
-import embeds.EmbedCreator
+import Embeds.EmbedCreator
 
 class SandAttackMove : Move() {
     override var name = "Sand Attack"
@@ -10,7 +10,7 @@ class SandAttackMove : Move() {
     override var description = "Lowers your opponents accuracy by 15%"
 
     override fun executeMove(fightManager: FightManager, channel: MessageChannel) {
-        var standby = fightManager.getStandby()
+        var standby = fightManager.standby
         if(standby.accuracy > 75){
             channel.createMessage("Your opponents accuracy cant be lowered anymore, choose another move").subscribe()
             return

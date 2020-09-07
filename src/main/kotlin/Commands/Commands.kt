@@ -1,4 +1,4 @@
-package commands
+package Commands
 
 import discord4j.common.util.Snowflake
 

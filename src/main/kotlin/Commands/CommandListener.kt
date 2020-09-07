@@ -1,6 +1,6 @@
-package commands
+package Commands
 
-import fightGame.Fight
+import FightGame.Fight
 import discord4j.core.GatewayDiscordClient
 import discord4j.core.`object`.entity.Message
 import reactor.core.publisher.Flux

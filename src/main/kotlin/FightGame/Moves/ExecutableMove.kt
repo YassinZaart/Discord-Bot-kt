@@ -1,6 +1,6 @@
-package fightGame.moves
+package FightGame.Moves
 
-import fightGame.FightManager
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
 
 interface ExecutableMove {

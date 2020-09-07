@@ -1,8 +1,9 @@
-package embeds
+package Embeds
 
-import fightGame.moves.Move
+import FightGame.Moves.Move
 import discord4j.core.`object`.entity.channel.MessageChannel
 import discord4j.rest.util.Color
+import java.lang.IllegalArgumentException
 
 class EmbedCreator(var channel: MessageChannel) {
 
@@ -27,7 +28,7 @@ class EmbedCreator(var channel: MessageChannel) {
     }
 
     fun createTurnEmbed(moves: Array<Move>, name: String) {
-        if(moves.size != 4) return
+        if(moves.size != 4)  throw IllegalArgumentException("MoveSet should only have 4 moves")
         channel.createEmbed { spec ->
             spec.setColor(Color.PINK)
                 .setTitle("Its $name's turn, what do you want to do")

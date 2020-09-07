@@ -1,4 +1,4 @@
-package commands
+package Commands
 
 enum class CommandType(val commandName : String) {
     MUTE("mute"),

@@ -1,4 +1,4 @@
-package commands
+package Commands
 
 import discord4j.core.`object`.entity.Message
 import java.util.*
