@@ -1,30 +1,31 @@
 package FightGame.Moves
 import Embeds.EmbedCreator
-import FightGame.Fighter
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
 
 class PunchMove: Move() {
     override var name = "Punch"
     override var description = "Attacks your opponent"
 
-    override fun executeMove(executor : Fighter, standby : Fighter, channel: MessageChannel) {
+    override fun executeMove(fightManager : FightManager, channel: MessageChannel) {
         val embedCreator = EmbedCreator(channel)
-
-        executor.turn = false
-        standby.turn = true
+        val executor = fightManager.executor
+        val standby = fightManager.standby
+        fightManager.switchTurns()
 
         val rand = (Math.random() * 101).toInt()
         if (executor.accuracy > rand) {
-            embedCreator.missedPunch(executor.name + " missed the punch, what a shame")
+            embedCreator.createImageTitle(executor.name + " missed the punch, what a shame", Constants.MISSED_PUNCH_URL)
             return
         }
         val ceiling = executor.attack * standby.defense
         val range = (ceiling - ceiling / 2 + 1)
-        val damage = (Math.random() * range).toInt() + (ceiling / 2)
+        val damage = ((Math.random() * range).toInt() + (ceiling / 2)).toInt()
         standby.hp -= damage
+
         if (standby.hp < 0) standby.hp = 0
-        embedCreator.createPunchEmbed(executor.name + " deals "
-                + damage + " to " + standby.name + "leaving them with " + standby.hp + " hp!")
+        embedCreator.createImageTitle(executor.name + " deals "
+                + damage + " to " + standby.name + "leaving them with " + standby.hp + " hp!", Constants.PUNCH_URL)
 
 
     }

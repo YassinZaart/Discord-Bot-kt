@@ -3,7 +3,6 @@ package Commands
 import FightGame.Fight
 import discord4j.core.GatewayDiscordClient
 import discord4j.core.`object`.entity.Message
-import discord4j.core.`object`.entity.channel.MessageChannel
 import reactor.core.publisher.Flux
 
 class CommandListener(var messageFlux: Flux<Message>, var prefix: String, var client : GatewayDiscordClient) {
@@ -20,10 +19,10 @@ class CommandListener(var messageFlux: Flux<Message>, var prefix: String, var cl
     }
 
     private fun kick(message: Message){
-        val formatChecker = CommandFormat(message)
+        val formatChecker = CommandFormatValidator(message)
         when(formatChecker.simpleFormatCheck()){
-            SimpleFormatState.NO_MENTIONS -> sendMessage(message, "Mention a User")
-            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, "Mention only one User")
+            SimpleFormatState.NO_MENTIONS -> sendMessage(message, Constants.KICK_NO_MENTIONS_MESSAGE)
+            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, Constants.KICK_MORE_THAN_ONE_MENTION_MESSAGE)
             else -> {
                 val userID = message.userMentionIds.iterator().next()
                 val operation = CommandOperation(message)
@@ -33,10 +32,10 @@ class CommandListener(var messageFlux: Flux<Message>, var prefix: String, var cl
     }
 
     private fun fight(message: Message){
-        val formatChecker = CommandFormat(message)
+        val formatChecker = CommandFormatValidator(message)
         when(formatChecker.simpleFormatCheck()){
-            SimpleFormatState.NO_MENTIONS -> sendMessage(message, "Choose who u wanna fight")
-            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, "You can only fight one person")
+            SimpleFormatState.NO_MENTIONS -> sendMessage(message, Constants.FIGHT_NO_MENTIONS_MESSAGE)
+            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, Constants.FIGHT_MORE_THAN_ONE_MENTION_MESSAGE)
             else -> {
                 val userID = message.userMentionIds.iterator().next()
                 val fight = Fight(message, client, userID)
@@ -46,10 +45,10 @@ class CommandListener(var messageFlux: Flux<Message>, var prefix: String, var cl
     }
 
     private fun kiss(message: Message){
-        val formatChecker = CommandFormat(message)
+        val formatChecker = CommandFormatValidator(message)
         when(formatChecker.simpleFormatCheck()){
-            SimpleFormatState.NO_MENTIONS -> sendMessage(message, "Choose who u wanna kiss :(")
-            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, "You can only kiss one person")
+            SimpleFormatState.NO_MENTIONS -> sendMessage(message, Constants.KISS_NO_MENTIONS_MESSAGE)
+            SimpleFormatState.MORE_THAN_ONE_MENTION -> sendMessage(message, Constants.KISS_MORE_THAN_ONE_MENTION_MESSAGE)
             else -> {
                 val userID = message.userMentionIds.iterator().next()
                 val operation = CommandOperation(message)

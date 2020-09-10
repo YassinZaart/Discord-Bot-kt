@@ -1,8 +1,8 @@
 package FightGame.Moves
 
-import FightGame.Fighter
+import FightGame.FightManager
 import discord4j.core.`object`.entity.channel.MessageChannel
 
 interface ExecutableMove {
-    fun executeMove(executor : Fighter, standby : Fighter, channel: MessageChannel)
+    fun executeMove(fightManager : FightManager, channel: MessageChannel)
 }

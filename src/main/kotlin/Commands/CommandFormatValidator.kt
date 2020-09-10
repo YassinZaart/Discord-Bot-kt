@@ -3,7 +3,7 @@ package Commands
 import discord4j.core.`object`.entity.Message
 import java.util.*
 
-class CommandFormat(var message : Message) {
+class CommandFormatValidator(var message : Message) {
 
     fun simpleFormatCheck() : SimpleFormatState {
         var mentions = message.userMentionIds
@@ -12,7 +12,7 @@ class CommandFormat(var message : Message) {
         return SimpleFormatState.NO_ERROR
     }
 
-    fun  ReasonFormatCheck() : ReasonFormatState{
+    fun  reasonFormatCheck() : ReasonFormatState{
         val scanner = Scanner(message.content)
         scanner.next()
         scanner.next()
