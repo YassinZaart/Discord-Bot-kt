@@ -3,7 +3,7 @@ This project is a discord bot developed using a reactive library to enable quick
 This bot is centered around a fighting minigame.
 
 #Commands
-*fight : starts a fight
-*bracket : organizes a tournament bracket
-*kick : moderation command
-*mute : moderation command
+* fight : starts a fight
+* bracket : organizes a tournament bracket
+* kick : moderation command
+* mute : moderation command
